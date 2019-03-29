@@ -25,7 +25,8 @@
         $userExists = mysqli_num_rows($result);
         if($userExists)
         {
-            $postID = mysqli_num_rows($mysqli->query("SELECT post_id FROM Posts")) + 1;
+            $postID = time();
+            $Content = str_replace("'", "\'", $Content);
             $query = "INSERT INTO Posts (post_id, content, author_id) VALUES ('$postID', '$Content', '$UserName');";
             
             if ($mysqli->query($query) === TRUE)
